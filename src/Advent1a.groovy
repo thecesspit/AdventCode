@@ -2,7 +2,7 @@
  * Created by Chris on 2016-12-02.
  */
 
-import myVector
+import Helper.myVector
 
 // This code tackles Advent of Code Day 1a
 

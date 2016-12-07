@@ -7,6 +7,7 @@
 File input = new File("C:/Users/Chris/IdeaProjects/AdventCode/AdventFiles/Advent3a_input.txt")
 
 String line
+
 int count = 0
 
 // Read in three lines

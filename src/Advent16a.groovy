@@ -7,12 +7,12 @@
  */
 
 // Take a Boolean list and create a checksum
-def checksum(String checkList){
+def checksum(List <Boolean> checkList){
     while(checkList.size() % 2 == 0){
-        String newCheckList = ""
-        for(def i = 0; i < checkList.length(); i = i + 2){
-            if(checkList[i] == checkList[i+1]){ newCheckList = newCheckList + "1"}
-            else{ newCheckList = newCheckList + "0"}
+        List <Boolean> newCheckList = []
+        for(def i = 0; i < checkList.size(); i = i + 2){
+            if(checkList[i] == checkList[i+1]){ newCheckList << true}
+            else{ newCheckList << false }
         }
         checkList = newCheckList
     }
@@ -20,30 +20,52 @@ def checksum(String checkList){
 }
 
 // Create a new padded String using the Dragon
-def dragonPad(String stringToExtend){
-    String padding = stringToExtend
+List <Boolean> dragonPad(List <Boolean> listToExtend){
+    List padding = listToExtend
     padding = padding.reverse()
-    String newPadding = ""
-    padding.each{  x ->
-        if(x == "1"){ newPadding += "0"}
-        else{ newPadding += "1"}
+    padding.eachWithIndex{  x, i ->
+        if(x){ padding[i] = false}
+        else{ padding[i] = true}
     }
-    return  stringToExtend + "0" + newPadding
+    listToExtend << false
+    listToExtend << padding
+    return listToExtend.flatten()
+
+}
+
+def prettyPrintBooleanList(List <Boolean> output){
+    output.each {
+        if (it) { print "1" }
+        else { print "0" }
+    }
+    println()
+
 }
 
 int DISKSIZE = 35651584
 String input = "11110010111001001"
-String disk = input
+List <Boolean> disk = []
+input.each{
+    if(it == "1"){ disk << true }
+    else{ disk << false }
+}
+
 
 // Fill the disk with padding data
-while(disk.length() < DISKSIZE){
+while(disk.size() < DISKSIZE){
     disk = dragonPad(disk)
-    println disk.length()
+    println disk.size()
 }
+
+//prettyPrintBooleanList(disk)
+
 
 // Take only the disk size of information
 disk = disk.take(DISKSIZE)
 def checksum = checksum(disk)
-println(checksum)
+println()
+prettyPrintBooleanList(checksum)
+
+
 
 

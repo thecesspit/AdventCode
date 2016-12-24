@@ -34,7 +34,6 @@ List <BigInteger> openPorts  = []
 
 BigInteger maxAnswer = 4294967295
 
-BigInteger maxAnswer = blockedPorts.last()[1].toBigInteger() + 1
 println maxAnswer
 
 while(openPort < maxAnswer){

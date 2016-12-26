@@ -33,10 +33,47 @@ class assemBunny {
         pc++
     }
 
-    //jmp
+    //jnz
     def jump(String x, String y){
-        if(registers[x] != 0){ pc = pc + y.toInteger()}
+        if(registers[x] != 0){
+            // Passed in a numeric
+            if(y.find(/^(-)*(\d+)$/)){
+                pc = pc + y.toInteger()
+            }
+            // Passed in a register value
+            else if(y.find(/^[abcd]$/)){
+                pc = pc + registers[y]
+            }
+            else
+            {
+                println("$x $y")
+            }
+        }
         else{ pc++ }
+    }
+
+    //tgl
+    def tgl(x, instructions){
+        int jump = registers[x]
+
+        if(!instructions[pc+jump]){
+            println "Skipping Toggle"
+        }
+        else if(instructions[pc + jump][0] == 'inc' ){
+            instructions[pc + jump][0] = 'dec'
+        }
+        else if(instructions[pc + jump][0] == 'dec' ){
+            instructions[pc + jump][0] = 'inc'
+        }
+        else if(instructions[pc + jump][0] == 'tgl' ){
+            instructions[pc + jump][0] = 'inc'
+        }
+        else if(instructions[pc + jump][0] == 'jnz' ){
+            instructions[pc + jump][0] = 'cpy'
+        }
+        else if(instructions[pc + jump][0] == 'cpy' ){
+            instructions[pc + jump][0] = 'jnz'
+        }
     }
 
     //Report on our registers

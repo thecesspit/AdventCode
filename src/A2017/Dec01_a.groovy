@@ -19,7 +19,7 @@ def numberCaptcha(String numberString){
 }
 
 // Load in a Data File and tokenize
-def inputString = new File("DecFiles/Dec01_a").text
+def inputString = new File("DecFiles/Dec01").text
 
 println numberCaptcha(inputString)
 

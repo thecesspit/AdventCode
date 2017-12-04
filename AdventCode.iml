@@ -7,6 +7,10 @@
       <sourceFolder url="file://$MODULE_DIR$/AdventFiles" type="java-resource" />
       <sourceFolder url="file://$MODULE_DIR$/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/A2017/DecFiles" type="java-resource" />
+      <sourceFolder url="file://$MODULE_DIR$/src/A2015/DecFiles" type="java-resource" />
+      <sourceFolder url="file://$MODULE_DIR$/src/A2015" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/A2017" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/A2016" isTestSource="false" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
